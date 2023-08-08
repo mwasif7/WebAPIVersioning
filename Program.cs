@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Versioning;
+using Microsoft.AspNetCore.Mvc.Versioning.Conventions;
+using WebAPIVersioning;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +22,13 @@ builder.Services.AddApiVersioning(option =>
     //     new MediaTypeApiVersionReader("version"),
     //     new HeaderApiVersionReader("apiVersion")
     // );
+
+    // #Instead of decorators on controller we can use below code to give the API version to the controllers
+    // option.Conventions.Controller<WeatherForecast>()
+    //             .HasDeprecatedApiVersion(1,0)
+    //             .HasApiVersion(2,0);
+
+
     option.ReportApiVersions = true;
 
 });
