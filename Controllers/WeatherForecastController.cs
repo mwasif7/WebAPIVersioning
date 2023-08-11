@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPIVersioning.Controllers;
@@ -19,6 +20,7 @@ public class WeatherForecastController : ControllerBase
 
    [HttpGet]
    [MapToApiVersion("1.0")]
+   [Authorize]
     public WeatherForecast GetOld()
     {
         var NewWeather = new WeatherForecast
@@ -35,6 +37,7 @@ public class WeatherForecastController : ControllerBase
 
     [HttpGet]
     [MapToApiVersion("2.0")]
+    [Authorize]
     public WeatherForecast GetNew()
     {
         var NewWeather = new WeatherForecast
